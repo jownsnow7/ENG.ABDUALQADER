@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    
+<form action="" method="get">
+<h2>Age Calculator</h2>
+<h3>ENG.Abdualqader</h3>
+
+<div class="age" id="age"></div>
+
+<div class="block">
+    <p class="title">Date</p>
+    <input type="text"  id="day" placeholder="Day" required autofocus>
+</div>
+
+<div class="block">
+    <p class="title">Month</p>
+    <input type="text"  id="month" required placeholder="Month" >
+</div>
+
+<div class="block">
+    <p class="title">Year</p>
+    <input type="text"  id="year" required placeholder="Year" >
+</div>
+<button type="button" onclick="age()">Calculate</button>
+</form>
+
+
+<script>
+    function age(){
+        let day = document.getElementById('day').value;
+        let month = document.getElementById('month').value;
+        let year = document.getElementById('year').value;
+
+        let date = new Date(); // Fri Jun 17 2022 21:54:39 GMT+0100 (UTC+01:00)
+        let get_day = date.getDate(); // 17
+        let get_month = 1 + date.getMonth(); // 6
+        let get_year = date.getFullYear(); // 2022
+
+        let all_month = [31,28,31,30,31,30,31,31,20,31,30,31];
+
+        if(day > get_day){
+            get_day = get_day+all_month[get_month - 1];
+            get_day = get_day -1 ;
+
+        }
+
+        if(month > get_month){
+            get_month = get_month +12;
+            get_year = get_year-1;
+        }
+
+        let d = get_day-day;
+        let m = get_month-month;
+        let y = get_year - year;
+       
+        document.getElementById('age').innerHTML = 'Your Age is '+y+
+        ' Years <br> Next date of birth after '+m+ ' Months and '+d+ ' days';
+
+
+    }
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
